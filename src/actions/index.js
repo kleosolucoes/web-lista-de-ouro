@@ -1,3 +1,4 @@
+import * as api from '../helpers/api'
 export const PEGAR_PROSPECTOS = 'PEGAR_PROSPECTOS'
 export const ADICIONAR_PROSPECTOS = 'ADICIONAR_PROSPECTOS'
 export const ALTERAR_PROSPECTO = 'ALTERAR_PROSPECTO'
@@ -53,4 +54,43 @@ export function alterarUsuario(usuario){
 		type: ALTERAR_USUARIO,
 		usuario,
 	}
+}
+
+export const logarNaApiEAlterarUsuario = (dados) => dispatch => {
+	return api.logarNaApi(dados)
+		.then(retornoDaApi => {
+			if(retornoDaApi.ok){
+				dispatch(alterarUsuario(dados))
+				return true
+			}
+			if(!retornoDaApi.ok){
+				return false
+			}
+		})
+}
+
+export const registrarNaApiEAlterarUsuario = (dados) => dispatch => {
+	return api.registrarNaAPI(dados)
+		.then(retornoDaApi => {
+			if(retornoDaApi.ok){
+				dispatch(alterarUsuario(dados))
+				return true
+			}
+			if(!retornoDaApi.ok){
+				return false
+			}
+		})
+}
+
+export const alterarUsuarioNaApi = (dados) => dispatch => {
+	return api.alterarUsuarioNaApi(dados)
+		.then(retornoDaApi => {
+			if(retornoDaApi.ok){
+				dispatch(alterarUsuario(dados))
+				return true
+			}
+			if(!retornoDaApi.ok){
+				return false
+			}
+		})
 }

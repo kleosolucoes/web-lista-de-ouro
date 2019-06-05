@@ -44,3 +44,15 @@ export const sincronizarNaAPI = (dados) =>
 	)
 		.then(resultado => resultado.json())
 		.then(json => json)
+
+export const alterarUsuarioNaApi = (dados) =>
+	fetch(
+		`${api}/no/alterar`,
+		{
+			headers,
+			method: "POST",
+			body: JSON.stringify(dados),
+		}
+	)
+		.then(resultado => resultado.json())
+		.then(json => json)
