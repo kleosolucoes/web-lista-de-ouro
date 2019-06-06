@@ -11,11 +11,17 @@ class Registro extends React.Component {
 
 	state = {
 		carregando: false,
-		nome: 'leo',
-		ddd: '61',
-		telefone: '998510703',
-		email: 'falecomleonardopereira@gmail.com',
-		senha: '123',
+		nome: '',
+		ddd: '',
+		telefone: '',
+		email: '',
+		senha: '',
+	}
+
+	ajudadorDeCampo = event => {
+		let valor = event.target.value
+		const name = event.target.name
+		this.setState({[name]: valor})
 	}
 
 	ajudadorDeSubmissao = () => {
@@ -69,7 +75,7 @@ class Registro extends React.Component {
 		}
 
 		if (mostrarMensagemDeErro) {
-			alert(`Campos invalidos: ${camposComErro}`)
+			alert(`Campos invalidos`)
 		} else {
 			try {
 				this.setState({ carregando: true })
@@ -80,14 +86,14 @@ class Registro extends React.Component {
 					email,
 					senha,
 				}
-				registrarNaApiEAlterarUsuario(dados)
+				this.props.registrarNaApiEAlterarUsuario(dados)
 					.then(resposta => {
 						this.setState({ carregando: false })
 						if (resposta) {
 							alert('Registrado com sucesso!')
 							this.props.alterarTela('Principal')
 						} else {
-							alert(`Aviso: ${resposta.menssagem}`)
+							alert('Aviso: Email já utilizado e/ou Dados Inválidos')
 						}
 					})
 					.catch(error => console.log('error: ', error))
@@ -128,8 +134,9 @@ class Registro extends React.Component {
 										<p style={{ color: gold }}>Nome</p>
 									</div>
 									<input 
+										name='nome'
 										value={nome}
-										onChange={texto => this.setState({ nome: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 
@@ -142,8 +149,9 @@ class Registro extends React.Component {
 											<p style={{ color: gold }}>DDD</p>
 										</div>
 										<input
+											name='ddd'
 											value={ddd}
-											onChange={texto => this.setState({ ddd: texto })}
+											onChange={this.ajudadorDeCampo}
 										/>
 									</div>
 
@@ -152,8 +160,9 @@ class Registro extends React.Component {
 											<p style={{ color: gold }}>Telefone</p>
 										</div>
 										<input 
+											name='telefone'
 											value={telefone}
-											onChange={texto => this.setState({ telefone: texto })}
+											onChange={this.ajudadorDeCampo}
 										/>
 									</div>
 								</div>
@@ -166,8 +175,9 @@ class Registro extends React.Component {
 										<p style={{ color: gold }}>Email</p>
 									</div>
 									<input 
+										name='email'
 										value={email}
-										onChange={texto => this.setState({ email: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 
@@ -179,8 +189,10 @@ class Registro extends React.Component {
 										<p style={{ color: gold }}>Senha</p>
 									</div>
 									<input 
+										name='senha'
+										type='password'
 										value={senha}
-										onChange={texto => this.setState({ senha: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 

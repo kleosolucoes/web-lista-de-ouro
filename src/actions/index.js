@@ -60,6 +60,12 @@ export const logarNaApiEAlterarUsuario = (dados) => dispatch => {
 	return api.logarNaApi(dados)
 		.then(retornoDaApi => {
 			if(retornoDaApi.ok){
+				if(retornoDaApi.resultado.nomeCaptura){
+					dados.nomeCaptura = retornoDaApi.resultado.nomeCaptura
+				}
+				if(retornoDaApi.resultado.url){
+					dados.url = retornoDaApi.resultado.url
+				}
 				dispatch(alterarUsuario(dados))
 				return true
 			}

@@ -4,6 +4,12 @@ import Registro from './componentes/Registro'
 import Principal from './componentes/Principal'
 import Captura from './componentes/Captura'
 import DadosCaptura from './componentes/DadosCaptura'
+import {
+	alterarUsuario
+} from './actions'
+import {
+	connect
+} from 'react-redux'
 
 class App extends React.Component {
 
@@ -12,6 +18,12 @@ class App extends React.Component {
 	}
 
 	alterarTela = (tela) => this.setState({tela})
+
+	deslogar = () => {
+		this.props.alterarUsuario({})
+		alert('Você deslogou')
+		this.alterarTela('Login')
+	}
 
 	render () {
 		const {
@@ -37,6 +49,10 @@ class App extends React.Component {
 						</button>
 					)
 				}
+				<button
+					onClick={() => this.deslogar()}>
+					deslogar
+				</button>
 				{
 					tela === 'Inicial' &&
 						<p>
@@ -77,4 +93,10 @@ class App extends React.Component {
 	}
 }
 
-export default App
+const mapDispatchToProps = (dispatch) => {
+	return{
+		alterarUsuario: (dados) => dispatch(alterarUsuario(dados)),
+	}
+}
+
+export default connect(null, mapDispatchToProps)(App)

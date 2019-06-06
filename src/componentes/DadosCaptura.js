@@ -10,22 +10,47 @@ import {
 class DadosCaptura extends React.Component {
 
 	state = {
-		nome: 'Léo Pereira',
-		url: 'https://www.youtube.com/watch?v=T8rEbNJqqMA&list=RDT8rEbNJqqMA&index=1',
+		nomeCaptura: '',
+		url: '',
 		carregando: false,
+	}
+
+	componentDidMount(){
+		const {
+			usuario,
+			alterarTela,
+		} = this.props
+
+		if(usuario.email === undefined){
+			alterarTela('Login')
+		}else{
+			if(usuario.nomeCaptura){
+				this.setState({nomeCaptura: usuario.nomeCaptura})
+			}
+			if(usuario.url){
+				this.setState({url: usuario.url})
+			}
+		}
+	}
+
+	ajudadorDeCampo = event => {
+		let valor = event.target.value
+		const name = event.target.name
+		this.setState({[name]: valor})
 	}
 
 	ajudadorDeSubmissao = () => {
 		const {
-			nome,
+			nomeCaptura,
 			url,
 		} = this.state
 		const {
-			alterarUsuarioNaApi
+			alterarUsuarioNaApi,
+			usuario,
 		} = this.props
 
 		let mostrarMensagemDeErro = false
-		if (nome === '') {
+		if (nomeCaptura === '') {
 			mostrarMensagemDeErro = true
 		}
 
@@ -38,8 +63,9 @@ class DadosCaptura extends React.Component {
 		} else {
 			this.setState({carregando:true})
 			const dados = {
-				nome,
+				nomeCaptura,
 				url,
+				email: usuario.email
 			}
 			alterarUsuarioNaApi(dados)
 				.then(retorno => {
@@ -57,7 +83,7 @@ class DadosCaptura extends React.Component {
 
 	render() {
 		const {
-			nome,
+			nomeCaptura,
 			url,
 			carregando,
 		} = this.state
@@ -89,8 +115,9 @@ class DadosCaptura extends React.Component {
 										<p style={{ color: gold }}>Nome para Aparecer</p>
 									</div>
 									<input
-										value={nome}
-										onChange={texto => this.setState({ nome: texto })}
+										name='nomeCaptura'
+										value={nomeCaptura}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 								<div style={{ marginTop: 18 }}>
@@ -101,8 +128,9 @@ class DadosCaptura extends React.Component {
 										<p style={{ color: gold }}>Url do youtube</p>
 									</div>
 									<input 
+										name='url'
 										value={url}
-										onChange={texto => this.setState({ url: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 							</div>
@@ -121,10 +149,16 @@ class DadosCaptura extends React.Component {
 	}
 }
 
+const mapStateToProps = ({usuario}) => {
+	return {
+		usuario,
+	}
+}
+
 const mapDispatchToProps = (dispatch) => {
 	return {
 		alterarUsuarioNaApi: (dados) => dispatch(alterarUsuarioNaApi(dados)),
 	}
 }
 
-export default connect(null, mapDispatchToProps)(DadosCaptura)
+export default connect(mapStateToProps, mapDispatchToProps)(DadosCaptura)

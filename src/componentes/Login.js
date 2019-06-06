@@ -10,9 +10,15 @@ import {
 class Login extends React.Component {
 
 	state = {
-		email: 'falecomleonardopereira@gmail.com',
-		senha: '123',
+		email: '',
+		senha: '',
 		carregando: false,
+	}
+
+	ajudadorDeCampo = event => {
+		let valor = event.target.value
+		const name = event.target.name
+		this.setState({[name]: valor})
 	}
 
 	ajudadorDeSubmissao = () => {
@@ -88,8 +94,9 @@ class Login extends React.Component {
 										<p style={{ color: gold }}>Email</p>
 									</div>
 									<input
+										name='email'
 										value={email}
-										onChange={texto => this.setState({ email: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 								<div style={{ marginTop: 18 }}>
@@ -100,8 +107,10 @@ class Login extends React.Component {
 										<p style={{ color: gold }}>Senha</p>
 									</div>
 									<input 
+										name='senha'
+										type='password'
 										value={senha}
-										onChange={texto => this.setState({ senha: texto })}
+										onChange={this.ajudadorDeCampo}
 									/>
 								</div>
 							</div>
