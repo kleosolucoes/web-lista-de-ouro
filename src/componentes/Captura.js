@@ -70,6 +70,11 @@ class Captura extends React.Component {
 			cadastrarProspectoNaApi(elemento)
 				.then(retorno => {
 					if(retorno.ok){
+						this.setState({
+							nome: '',
+							telefone: '',
+							email: '',
+						})
 						alert('Registrado com sucesso!')
 					}
 				})
