@@ -56,3 +56,27 @@ export const alterarUsuarioNaApi = (dados) =>
 	)
 		.then(resultado => resultado.json())
 		.then(json => json)
+
+export const consultarApelidoNaApi = (dados) =>
+	fetch(
+		`${api}/no/apelido`,
+		{
+			headers,
+			method: "POST",
+			body: JSON.stringify(dados),
+		}
+	)
+		.then(resultado => resultado.json())
+		.then(json => json)
+
+export const cadastrarProspectoNaApi = (dados) =>
+	fetch(
+		`${api}/no/cadastrarProspecto`,
+		{
+			headers,
+			method: "POST",
+			body: JSON.stringify(dados),
+		}
+	)
+		.then(resultado => resultado.json())
+		.then(json => json)

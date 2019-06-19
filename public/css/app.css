@@ -1,0 +1,284 @@
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Gothic A1', sans-serif;
+}
+
+header {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+}
+header .logo {
+    
+}
+
+.cover {
+    padding: 300px 0 200px 0;
+    background: url('../img/background.jpg') center center no-repeat;
+    background-size: cover;
+    /*    min-height: 100vh;*/
+}
+
+.cover h1 {
+    color: #FFF;
+    font-size: 54px;
+    line-height: 1.2;
+}
+
+.cover h1.bold {
+    color: #006ab2;
+    font-size: 91px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.cover h4 {
+    font-weight: 800;
+    color: #373737;
+    margin: 0 0 .8rem 0;
+}
+
+.cover .callout {
+    background: #E8E8E8;
+    padding: 1.4rem;
+}
+
+.callout {
+    background: #DCD6CB;
+    border: none;
+    padding: 3rem 4rem 4rem;
+}
+
+/*
+h1 { font-size: 80px; line-height: 1; margin: 0 0 1.6rem 0; }
+h2 { line-height: 1; margin: 0; }
+*/
+
+.form {}
+
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea {
+    padding: 0.5rem 1.5rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    color: #006ab2;
+    border: 2px solid #006ab2;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+}
+
+[type='text']:focus,
+[type='password']:focus,
+[type='date']:focus,
+[type='datetime']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='week']:focus,
+[type='email']:focus,
+[type='number']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='url']:focus,
+[type='color']:focus,
+textarea:focus {
+    color: #FFF;
+    border: 2px solid #006ab2;
+    background: rgba(104, 151, 160, 0.2);
+}
+
+[type='button']{
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border: 2px solid #006ab2;
+    background: #006ab2;
+    color: #FFF;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+[type='button'] img {
+    margin-left: 8px;
+    width: 33px;
+}
+
+.button {
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    border: 2px solid #006ab2;
+    background: #006ab2;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.button img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button:hover {
+    background: #006ab2;
+}
+
+form ::-webkit-input-placeholder {
+    color: #373737;
+}
+
+form ::-moz-placeholder {
+    color: #373737;
+}
+
+form :-ms-input-placeholder {
+    color: #373737;
+}
+
+form :-moz-placeholder {
+    color: #373737;
+}
+
+.form-success {
+    display: none;
+}
+
+.video {
+    background: #006ab2;
+    padding-bottom: 2rem;
+}
+
+.video h1 {
+    color: #FFF;
+    font-size: 47px;
+}
+
+.video h1.bold {
+    font-weight: 800;
+}
+
+footer {
+    padding: 2rem 0 0 0;
+    background: #F4F4F4;
+}
+
+footer h1 {
+    font-size: 60px;
+    color: #05080F;
+    line-height: 1;
+}
+
+footer h1.bold {
+    font-weight: 800;
+}
+
+footer h4 {
+    font-weight: 800;
+    color: #373737;
+    margin: 0 0 .8rem 0;
+}
+
+footer .callout {
+    background: #E8E8E8;
+}
+
+footer [type='submit'] img {
+    margin: 0;
+}
+
+.title {
+    margin: 2rem 0;
+}
+.logo {
+    display: inline-block;
+    width: 100%;
+    max-width: 180px;
+}
+
+
+.responsive-embed.widescreen,
+.flex-video.widescreen {
+    padding-bottom: 56.25%;
+}
+
+.responsive-embed,
+.flex-video {
+    position: relative;
+    height: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 75%;
+    overflow: hidden;
+}
+
+.responsive-embed iframe,
+.responsive-embed object,
+.responsive-embed embed,
+.responsive-embed video,
+.flex-video iframe,
+.flex-video object,
+.flex-video embed,
+.flex-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* SMALL */
+@media screen and (max-width: 39.9375em) {
+    header {
+        top: 20px;
+    }
+
+    .cover {
+        padding: 120px 0;
+    }
+
+    .cover h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .cover h1.bold {
+        font-size: 32px;
+    }
+
+    .video h1 {
+        font-size: 22px;
+    }
+
+    footer h1 {
+        font-size: 26px;
+    }
+
+    footer .callout {
+        padding: 2rem;
+    }
+}
